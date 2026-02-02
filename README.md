@@ -1,76 +1,88 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM).
+# mToast
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+A lightweight Compose Multiplatform library for displaying toast messages across Android, iOS, Desktop (JVM), and Web (Wasm/JS).
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Installation
 
-### Build and Run Android Application
+Add the dependency to your `commonMain` source set:
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+```kotlin
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation("it.xabaras:mtoast:1.0.0")
+        }
+    }
+}
+```
 
-### Build and Run Desktop (JVM) Application
+## Setup
 
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:run
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:run
-  ```
+To use the library, wrap your main content with the `ToastContainer`. This component hosts the toast overlays.
 
-### Build and Run Web Application
+```kotlin
+ToastContainer {
+    // Your app content here
+    App()
+}
+```
 
-To build and run the development version of the web app, use the run configuration from the run widget
-in your IDE's toolbar or run it directly from the terminal:
-- for the Wasm target (faster, modern browsers):
-  - on macOS/Linux
-    ```shell
-    ./gradlew :composeApp:wasmJsBrowserDevelopmentRun
-    ```
-  - on Windows
-    ```shell
-    .\gradlew.bat :composeApp:wasmJsBrowserDevelopmentRun
-    ```
-- for the JS target (slower, supports older browsers):
-  - on macOS/Linux
-    ```shell
-    ./gradlew :composeApp:jsBrowserDevelopmentRun
-    ```
-  - on Windows
-    ```shell
-    .\gradlew.bat :composeApp:jsBrowserDevelopmentRun
-    ```
+On iOS, the toast automatically aligns to the top to avoid overlapping with the notch/dynamic island, while on other platforms it defaults to the bottom.
 
-### Build and Run iOS Application
+## Usage
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+The library provides several `showToast` methods to display different types of messages.
 
----
+### 1. Simple Text Toast
+Displays a basic text message with a default duration.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+```kotlin
+showToast("Hello, World!")
+```
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).
+### 2. Toast with Duration
+You can specify a custom duration in milliseconds, or use constants from `ToastDefaults`.
+
+```kotlin
+showToast(
+    message = "This is a short toast",
+    durationMillis = ToastDefaults.DURATION_SHORT
+)
+```
+
+### 3. Toast with Icon (ImageVector, ImageBitmap, or Painter)
+You can include an icon alongside your message. The library supports `ImageVector`, `ImageBitmap`, and `Painter`.
+
+```kotlin
+showToast(
+    message = "Success!",
+    icon = Icons.Default.Check,
+    iconTint = Color.Green,
+    durationMillis = ToastDefaults.DURATION_LONG
+)
+```
+
+### 4. Fully Custom Composable Toast
+If you need complete control over the toast's appearance, you can pass a custom Composable.
+
+```kotlin
+showToast(durationMillis = 5000L) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        CircularProgressIndicator(modifier = Modifier.size(16.dp))
+        Spacer(Modifier.width(8.dp))
+        Text("Loading...")
+    }
+}
+```
+
+## Configuration
+
+### ToastDefaults
+The library provides default values that you can use:
+- `DURATION_SHORT`: 2000ms
+- `DURATION_DEFAULT`: 3000ms
+- `DURATION_LONG`: 5000ms
+- `DEFAULT_ICON_TINT`: Color.Unspecified (defaults to Black/White based on theme)
+
+## License
+Apache-2.0 license.
