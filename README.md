@@ -2,7 +2,9 @@
 
 A lightweight Compose Multiplatform library for displaying toast messages across Android, iOS, Desktop (JVM), and Web (Wasm/JS).
 
-## Installation
+![mToast](https://github.com/xabaras/m-toast/blob/main/sampleApp/src/commonMain/composeResources/drawable/mtoast.png?raw=true)
+
+## How do I get set up?
 
 Add the dependency to your `commonMain` source set:
 
