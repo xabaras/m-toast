@@ -76,20 +76,20 @@ mavenPublishing {
             license {
                 name = "Apache-2.0 license "
                 url = "https://github.com/xabaras/m-toast/blob/main/LICENSE"
-                distribution = "ZZZ"
+                distribution = "repo"
             }
         }
         developers {
             developer {
-                id = "XXX"
-                name = "YYY"
-                url = "ZZZ"
+                id = "xabaras"
+                name = "Paolo Montalto"
+                url = "https://www.xabaras.dev"
             }
         }
         scm {
-            url = "XXX"
-            connection = "YYY"
-            developerConnection = "ZZZ"
+            url = "https://github.com/xabaras/m-toast"
+            connection = "scm:git:git://github.com/xabaras/m-toast.git"
+            developerConnection = "scm:git:ssh://git@github.com/xabaras/m-toast.git"
         }
     }
 }
