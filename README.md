@@ -1,4 +1,5 @@
 # mToast
+[![Maven Central](https://maven-badges.sml.io/maven-central/it.xabaras/mtoast/badge.svg?style=flat&gav=true&version=0.1.0)](https://central.sonatype.com/artifact/it.xabaras/mtoast/0.1.0)
 
 A lightweight Compose Multiplatform library for displaying toast messages across Android, iOS, Desktop (JVM), and Web (Wasm/JS).
 
