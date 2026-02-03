@@ -13,7 +13,7 @@ Add the dependency to your `commonMain` source set:
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("it.xabaras:mtoast:1.0.0")
+            implementation("it.xabaras:mtoast:0.1.0")
         }
     }
 }

@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "it.xabaras"
-version = "1.0.0"
+version = "0.1.0"
 
 kotlin {
     jvm()
@@ -65,7 +65,7 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "library", version.toString())
+    coordinates(group.toString(), "mtoast", version.toString())
 
     pom {
         name = "mToast"
@@ -74,8 +74,8 @@ mavenPublishing {
         url = "https://github.com/xabaras/m-toast"
         licenses {
             license {
-                name = "Apache-2.0 license "
-                url = "https://github.com/xabaras/m-toast/blob/main/LICENSE"
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
                 distribution = "repo"
             }
         }
