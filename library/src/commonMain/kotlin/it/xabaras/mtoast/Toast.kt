@@ -196,6 +196,13 @@ private fun getPaddingValues(alignment: Alignment) : PaddingValues {
     }
 }
 
+/**
+ * Displays a text-only toast message.
+ *
+ * @param message The text message to display.
+ * @param durationMillis The duration the toast remains visible (defaults to 3000ms).
+ * @param alignment The screen alignment for the toast (defaults to platform-specific Auto).
+ */
 fun showToast(message: String, durationMillis: Long = ToastDefaults.DURATION_DEFAULT, alignment: Alignment = ToastDefaults.DEFAULT_ALIGNMENT) {
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     coroutineScope.launch {
@@ -203,6 +210,13 @@ fun showToast(message: String, durationMillis: Long = ToastDefaults.DURATION_DEF
     }
 }
 
+/**
+ * Displays a toast message with a custom Composable content.
+ *
+ * @param durationMillis The duration the toast remains visible (defaults to 3000ms).
+ * @param alignment The screen alignment for the toast (defaults to platform-specific Auto).
+ * @param composable The custom UI content to render inside the toast.
+ */
 fun showToast(durationMillis: Long = ToastDefaults.DURATION_DEFAULT, alignment: Alignment = ToastDefaults.DEFAULT_ALIGNMENT, composable: @Composable () -> Unit = ToastDefaults.DEFAULT_COMPOSABLE) {
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     coroutineScope.launch {
@@ -210,6 +224,15 @@ fun showToast(durationMillis: Long = ToastDefaults.DURATION_DEFAULT, alignment: 
     }
 }
 
+/**
+ * Displays a toast message with text and an [ImageVector] icon.
+ *
+ * @param message The text message to display.
+ * @param icon The [ImageVector] to display as an icon.
+ * @param iconTint The color tint for the icon.
+ * @param durationMillis The duration the toast remains visible.
+ * @param alignment The screen alignment for the toast.
+ */
 fun showToast(message: String, icon: ImageVector, iconTint: Color = ToastDefaults.DEFAULT_ICON_TINT, durationMillis: Long = ToastDefaults.DURATION_DEFAULT, alignment: Alignment = ToastDefaults.DEFAULT_ALIGNMENT) {
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     coroutineScope.launch {
@@ -217,6 +240,15 @@ fun showToast(message: String, icon: ImageVector, iconTint: Color = ToastDefault
     }
 }
 
+/**
+ * Displays a toast message with text and an [ImageBitmap] icon.
+ *
+ * @param message The text message to display.
+ * @param icon The [ImageBitmap] to display as an icon.
+ * @param iconTint The color tint for the icon.
+ * @param durationMillis The duration the toast remains visible.
+ * @param alignment The screen alignment for the toast.
+ */
 fun showToast(message: String, icon: ImageBitmap, iconTint: Color = ToastDefaults.DEFAULT_ICON_TINT, durationMillis: Long = ToastDefaults.DURATION_DEFAULT, alignment: Alignment = ToastDefaults.DEFAULT_ALIGNMENT) {
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     coroutineScope.launch {
@@ -224,6 +256,15 @@ fun showToast(message: String, icon: ImageBitmap, iconTint: Color = ToastDefault
     }
 }
 
+/**
+ * Displays a toast message with text and a [Painter] icon.
+ *
+ * @param message The text message to display.
+ * @param icon The [Painter] to display as an icon.
+ * @param iconTint The color tint for the icon.
+ * @param durationMillis The duration the toast remains visible.
+ * @param alignment The screen alignment for the toast.
+ */
 fun showToast(message: String, icon: Painter, iconTint: Color = ToastDefaults.DEFAULT_ICON_TINT, durationMillis: Long = ToastDefaults.DURATION_DEFAULT, alignment: Alignment = ToastDefaults.DEFAULT_ALIGNMENT) {
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     coroutineScope.launch {
